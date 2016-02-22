@@ -1,0 +1,144 @@
+{
+    "id": "agreement-module",
+    "title": "Agreement Designer Module",
+    "description": "This module contains the basic infrastructure to manage Service Level Agreements. It offers support to analyze SLAs, providing a variety of document operations as validity, compliance, dead terms, etc.",
+    "apiVersion": "1",
+    "helpUri": "/views/help/index.jsp",
+    "models": [
+        {
+            "id": "template",
+            "extension": "at",
+            "name": "Template",
+            "syntaxes": [
+                {
+                    "id": "iagree",
+                    "readOnly": false
+                },
+                {
+                    "id": "json",
+                    "readOnly": false
+                },
+                {
+                    "id": "yaml",
+                    "readOnly": false
+                }
+            ],
+            "operations": [
+                {
+                    "id": "checkValidity",
+                    "name": "Check validity",
+                    "description": "Check if document is valid.",
+                    "type": "simple"
+                },
+                {
+                    "id": "checkCompliance",
+                    "name": "Check compliance",
+                    "description": "Check if a document is compliant with this document.",
+                    "type": "requireFile",
+                    "config": {
+                        "filter": "*.ao"
+                    }
+                },
+                {
+                    "id": "complianceAnalysis",
+                    "name": "Compliance analysis",
+                    "description": "Return a compliance analysis.",
+                    "type": "simple"
+                },
+                {
+                    "id": "generateOPL",
+                    "name": "Generate OPL",
+                    "description": "Generate an OPL document.",
+                    "type": "createFile"
+                }
+            ]
+        },
+        {
+            "id": "offer",
+            "extension": "ao",
+            "name": "Offer",
+            "syntaxes": [
+                {
+                    "id": "iagree",
+                    "readOnly": false
+                },
+                {
+                    "id": "json",
+                    "readOnly": false
+                },
+                {
+                    "id": "yaml",
+                    "readOnly": false
+                }
+            ],
+            "operations": [
+                {
+                    "id": "checkValidity",
+                    "name": "Check validity",
+                    "description": "Check if document is valid.",
+                    "type": "simple"
+                },
+                {
+                    "id": "checkCompliance",
+                    "name": "Check compliance",
+                    "description": "Check if a document is compliant with this document.",
+                    "type": "requireFile",
+                    "config": {
+                        "filter": "*.at"
+                    }
+                },
+                {
+                    "id": "checkComplianceAuto",
+                    "name": "Auto check compliance",
+                    "description": "Check if a document is compliant with this document.",
+                    "type": "simple"
+                },
+                {
+                    "id": "complianceAnalysis",
+                    "name": "Compliance analysis",
+                    "description": "Return a compliance analysis.",
+                    "type": "simple"
+                },
+                {
+                    "id": "generateOPL",
+                    "name": "Generate OPL",
+                    "description": "Generate an OPL document.",
+                    "type": "createFile"
+                }
+            ]
+        },
+        {
+            "id": "agreement",
+            "extension": "ag",
+            "name": "Agreement",
+            "syntaxes": [
+                {
+                    "id": "iagree",
+                    "readOnly": false
+                },
+                {
+                    "id": "json",
+                    "readOnly": false
+                },
+                {
+                    "id": "yaml",
+                    "readOnly": false
+                }
+            ],
+            "operations": [
+                {
+                    "id": "checkValidity",
+                    "name": "Check validity",
+                    "description": "Check if document is valid.",
+                    "type": "simple"
+                },
+                {
+                    "id": "generateOPL",
+                    "name": "Generate OPL",
+                    "description": "Generate an OPL document.",
+                    "type": "createFile"
+                }
+            ]
+        }
+    ]
+}

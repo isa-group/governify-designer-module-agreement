@@ -1,0 +1,750 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Agreement Module",
+        "description": "This module contains the basic infrastructure to manage Service Level Agreements. It offers support to analyze SLAs, providing a variety of document operations as consistency, compliance, dead terms, etc.",
+        "version": "1.0.0"
+    },
+    "host": "modules.designer.governify.io",
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/agreement",
+    "produces": [
+        "application/json",
+        "text/plain"
+    ],
+    "paths": {
+        "/manifest": {
+            "get": {
+                "description": "This endpoint returns the agreement module manifest.\n",
+                "tags": [
+                    "Manifest"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The agreement module manifest in JSON format",
+                        "schema": {
+                            "$ref": "#/definitions/ModuleManifest"
+                        }
+                    }
+                }
+            }
+        },
+        "/version": {
+            "get": {
+                "description": "This endpoint returns the agreement module version.\n",
+                "tags": [
+                    "Manifest"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The agreement module version",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/help": {
+            "get": {
+                "description": "This endpoint returns the help content defined for the agreement module.\n",
+                "tags": [
+                    "Help"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Help content of the agreement module in JSON format."
+                    }
+                }
+            }
+        },
+        "/api/v1/models": {
+            "get": {
+                "description": "This endpoint returns a list containing all models supported by the agreement module.\n",
+                "tags": [
+                    "Manifest"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List containing the models supported by the agreement module in JSON format.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ModelManifest"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/models/{modelId}": {
+            "get": {
+                "description": "This endpoint returns the model manifest indentified by **modelId**.\n",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Manifest"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The model manifest in JSON format",
+                        "schema": {
+                            "$ref": "#/definitions/ModelManifest"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/models/{modelId}/syntaxes": {
+            "get": {
+                "description": "This endpoint returns a list containing the syntax supported by this model.\n",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Syntax"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List containing the syntax supported by this model in JSON format.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Syntax"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/models/{modelId}/syntaxes/{syntaxId}": {
+            "get": {
+                "description": "This endpoint returns the syntax identified by *syntaxId*.",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    },
+                    {
+                        "name": "syntaxId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **iagree**, **json** or **yaml**",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Syntax"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Syntax in JSON format.",
+                        "schema": {
+                            "$ref": "#/definitions/Syntax"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/models/{modelId}/syntaxes/{syntaxId}/mode": {
+            "get": {
+                "description": "This endpoint returns the mode of this syntax.\n",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    },
+                    {
+                        "name": "syntaxId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **iagree**, **json** or **yaml**",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Syntax"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mode of this syntax",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/models/{modelId}/syntaxes/{syntaxId}/theme": {
+            "get": {
+                "description": "This endpoint returns the theme of this syntax.\n",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    },
+                    {
+                        "name": "syntaxId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **iagree**, **json** or **yaml**",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Syntax"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Theme of this syntax",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/models/{modelId}/syntaxes/{syntaxId}/check": {
+            "post": {
+                "description": "This endpoint returns whether the syntax of this model is valid or not.\n",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    },
+                    {
+                        "name": "syntaxId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **iagree**, **json** or **yaml**",
+                        "required": true
+                    },
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Filedata"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Syntax"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AppResponse",
+                        "schema": {
+                            "$ref": "#/definitions/AppResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/models/{modelId}/syntaxes/{syntaxId}/translate": {
+            "get": {
+                "description": "This endpoint returns the result of converting from the current syntax to another supported syntax.\n",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    },
+                    {
+                        "name": "syntaxId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **iagree**, **json** or **yaml**",
+                        "required": true
+                    },
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Can be **iagree**, **json** or **yaml**",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Syntax"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The destination syntax signature",
+                        "schema": {
+                            "$ref": "#/definitions/Syntax"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "This endpoint returns the result of converting from the current syntax to another supported syntax.\n",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    },
+                    {
+                        "name": "syntaxId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **iagree**, **json** or **yaml**",
+                        "required": true
+                    },
+                    {
+                        "name": "to",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Can be **iagree**, **json** or **yaml**",
+                        "required": true
+                    },
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/Filedata"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Syntax"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AppResponse with the result of the conversion",
+                        "schema": {
+                            "$ref": "#/definitions/AppResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/models/{modelId}/operations": {
+            "get": {
+                "description": "This endpoint returns a list containing all operations supported by this model.\n",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Operation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List containing the operations supported by this model in JSON format",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Operation"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/models/{modelId}/operations/{operationId}": {
+            "get": {
+                "description": "This endpoint returns the operation identified by *operationId*.\n",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    },
+                    {
+                        "name": "operationId",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Operation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Operation supported by this model in JSON format",
+                        "schema": {
+                            "$ref": "#/definitions/Operation"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "This endpoint returns the result of executing this operation.\n",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    },
+                    {
+                        "name": "operationId",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Filedata"
+                            }
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Operation"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AppResponse with the result",
+                        "schema": {
+                            "$ref": "#/definitions/AppResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/models/{modelId}/tests": {
+            "get": {
+                "description": "This endpoint returns the model tests.",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List containg the tests supported by this model in JSON format",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Test"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/models/{modelId}/tests/{testId}": {
+            "get": {
+                "description": "This endpoint returns the model test identified by **testId**.",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    },
+                    {
+                        "name": "testId",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Test description in JSON format",
+                        "schema": {
+                            "$ref": "#/definitions/Test"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "This endpoint returns the result of executing this test.\n",
+                "parameters": [
+                    {
+                        "name": "modelId",
+                        "in": "path",
+                        "type": "string",
+                        "description": "Can be **template**, **offer** or **agreement**",
+                        "required": true
+                    },
+                    {
+                        "name": "testId",
+                        "in": "path",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "AppResponse with the result",
+                        "schema": {
+                            "$ref": "#/definitions/AppResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ModuleManifest": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier representing the module."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Title of the module."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the module."
+                },
+                "apiVersion": {
+                    "type": "string",
+                    "description": "Version of module API."
+                },
+                "helpUri": {
+                    "type": "string",
+                    "description": "Help URI of module."
+                },
+                "models": {
+                    "type": "array",
+                    "description": "List containing the models supported by this module.",
+                    "items": {
+                        "$ref": "#/definitions/ModelManifest"
+                    }
+                }
+            }
+        },
+        "ModelManifest": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier representing the model supported by the module."
+                },
+                "extension": {
+                    "type": "string",
+                    "description": "Extension of the files belonging to this model."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the model."
+                },
+                "syntaxes": {
+                    "type": "array",
+                    "description": "List containing the syntax supported by this model.",
+                    "items": {
+                        "$ref": "#/definitions/Syntax"
+                    }
+                },
+                "operations": {
+                    "type": "array",
+                    "description": "List containing the operations supported by this model.",
+                    "items": {
+                        "$ref": "#/definitions/Operation"
+                    }
+                }
+            }
+        },
+        "Syntax": {
+            "type": "object",
+            "description": "Syntax supported by the model.",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Identifier of this syntax."
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "description": "Indicates whether the documents in this syntax are read-only or not."
+                }
+            }
+        },
+        "Operation": {
+            "type": "object",
+            "description": "Operation supported by the model.",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier representing this operation, i.e. \"checkValidity\""
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of this operation, i.e. \"Check validity\""
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of this operation, i.e. \"Check if document is valid.\""
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the operation. Can be \"simple\", \"requireFile\" or \"createFile\""
+                },
+                "config": {
+                    "$ref": "#/definitions/Config"
+                }
+            }
+        },
+        "AppResponse": {
+            "type": "object",
+            "description": "Application response.",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "OK",
+                        "OK_PROBLEMS",
+                        "ERROR",
+                        "SESSION_ERROR"
+                    ],
+                    "description": "Status of the response."
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Message of the response."
+                },
+                "data": {
+                    "type": "string",
+                    "description": "Attached data to the response."
+                },
+                "annotations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AppAnnotation"
+                    }
+                }
+            }
+        },
+        "AppAnnotation": {
+            "type": "object",
+            "description": "Application annotations.",
+            "properties": {
+                "severity": {
+                    "type": "string",
+                    "enum": [
+                        "INFO",
+                        "WARNING",
+                        "ERROR",
+                        "FATAL"
+                    ],
+                    "description": "Severity of the annotation."
+                },
+                "line": {
+                    "type": "integer",
+                    "description": "Annotation line."
+                },
+                "column": {
+                    "type": "integer",
+                    "description": "Annotation column."
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Annotation message."
+                }
+            }
+        },
+        "Test": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "operationURI": {
+                    "type": "string"
+                },
+                "operationMethod": {
+                    "type": "string"
+                },
+                "parameters": {
+                    "type": "string"
+                },
+                "results": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AppResponse"
+                    }
+                }
+            }
+        },
+        "Filedata": {
+            "type": "object",
+            "properties": {
+                "fileUri": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                }
+            }
+        },
+        "Config": {
+            "type": "object",
+            "properties": {
+                "filter": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
