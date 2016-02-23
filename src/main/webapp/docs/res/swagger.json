@@ -7,7 +7,7 @@
     },
     "host": "modules.designer.governify.io",
     "schemes": [
-        "http"
+        "https"
     ],
     "basePath": "/agreement",
     "produces": [
