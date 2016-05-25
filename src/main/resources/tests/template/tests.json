@@ -1,0 +1,27 @@
+[
+    {
+        "id": "valid",
+        "description": "Execute the valid operation for a valid document",
+        "operationMethod": "POST",
+        "operationURI": "/api/v2/models/template/operations/checkValidity",
+        "operationParams":
+                {
+                    "modelId": "template",
+                    "operationId": "checkValidity",
+                    "data": [
+                        {
+                            "fileUri": "/tests/template/resources/iagree-core.at",
+                            "content": ""
+                        }
+                    ]            
+                },
+        "results": [
+            {
+                "status": "OK",
+                "message": "<pre><b>The document is consistent.</b></pre>",
+                "data": null,
+                "annotations": []
+            }
+        ]
+    }
+]

@@ -3,13 +3,13 @@
     "info": {
         "title": "Agreement Module",
         "description": "This module contains the basic infrastructure to manage Service Level Agreements. It offers support to analyze SLAs, providing a variety of document operations as consistency, compliance, dead terms, etc.",
-        "version": "1.0.0"
+        "version": "2.0.0"
     },
-    "host": "modules.designer.governify.io",
+    "host": "agreement.modules.designer.governify.io",
     "schemes": [
         "https"
     ],
-    "basePath": "/agreement",
+    "basePath": "/",
     "produces": [
         "application/json",
         "text/plain"
@@ -60,7 +60,7 @@
                 }
             }
         },
-        "/api/v1/models": {
+        "/api/v2/models": {
             "get": {
                 "description": "This endpoint returns a list containing all models supported by the agreement module.\n",
                 "tags": [
@@ -79,7 +79,7 @@
                 }
             }
         },
-        "/api/v1/models/{modelId}": {
+        "/api/v2/models/{modelId}": {
             "get": {
                 "description": "This endpoint returns the model manifest indentified by **modelId**.\n",
                 "parameters": [
@@ -104,7 +104,7 @@
                 }
             }
         },
-        "/api/v1/models/{modelId}/syntaxes": {
+        "/api/v2/models/{modelId}/syntaxes": {
             "get": {
                 "description": "This endpoint returns a list containing the syntax supported by this model.\n",
                 "parameters": [
@@ -132,7 +132,7 @@
                 }
             }
         },
-        "/api/v1/models/{modelId}/syntaxes/{syntaxId}": {
+        "/api/v2/models/{modelId}/syntaxes/{syntaxId}": {
             "get": {
                 "description": "This endpoint returns the syntax identified by *syntaxId*.",
                 "parameters": [
@@ -164,7 +164,7 @@
                 }
             }
         },
-        "/api/v1/models/{modelId}/syntaxes/{syntaxId}/mode": {
+        "/api/v2/models/{modelId}/syntaxes/{syntaxId}/mode": {
             "get": {
                 "description": "This endpoint returns the mode of this syntax.\n",
                 "parameters": [
@@ -196,7 +196,7 @@
                 }
             }
         },
-        "/api/v1/models/{modelId}/syntaxes/{syntaxId}/theme": {
+        "/api/v2/models/{modelId}/syntaxes/{syntaxId}/theme": {
             "get": {
                 "description": "This endpoint returns the theme of this syntax.\n",
                 "parameters": [
@@ -228,7 +228,7 @@
                 }
             }
         },
-        "/api/v1/models/{modelId}/syntaxes/{syntaxId}/check": {
+        "/api/v2/models/{modelId}/syntaxes/{syntaxId}/check": {
             "post": {
                 "description": "This endpoint returns whether the syntax of this model is valid or not.\n",
                 "parameters": [
@@ -268,44 +268,7 @@
                 }
             }
         },
-        "/api/v1/models/{modelId}/syntaxes/{syntaxId}/translate": {
-            "get": {
-                "description": "This endpoint returns the result of converting from the current syntax to another supported syntax.\n",
-                "parameters": [
-                    {
-                        "name": "modelId",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Can be **template**, **offer** or **agreement**",
-                        "required": true
-                    },
-                    {
-                        "name": "syntaxId",
-                        "in": "path",
-                        "type": "string",
-                        "description": "Can be **iagree**, **json** or **yaml**",
-                        "required": true
-                    },
-                    {
-                        "name": "to",
-                        "in": "query",
-                        "type": "string",
-                        "description": "Can be **iagree**, **json** or **yaml**",
-                        "required": true
-                    }
-                ],
-                "tags": [
-                    "Syntax"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "The destination syntax signature",
-                        "schema": {
-                            "$ref": "#/definitions/Syntax"
-                        }
-                    }
-                }
-            },
+        "/api/v2/models/{modelId}/syntaxes/{srcSyntaxId}/translate/{destSyntaxId}": {
             "post": {
                 "description": "This endpoint returns the result of converting from the current syntax to another supported syntax.\n",
                 "parameters": [
@@ -317,15 +280,15 @@
                         "required": true
                     },
                     {
-                        "name": "syntaxId",
+                        "name": "srcSyntaxId",
                         "in": "path",
                         "type": "string",
                         "description": "Can be **iagree**, **json** or **yaml**",
                         "required": true
                     },
                     {
-                        "name": "to",
-                        "in": "query",
+                        "name": "destSyntaxId",
+                        "in": "path",
                         "type": "string",
                         "description": "Can be **iagree**, **json** or **yaml**",
                         "required": true
@@ -352,7 +315,7 @@
                 }
             }
         },
-        "/api/v1/models/{modelId}/operations": {
+        "/api/v2/models/{modelId}/operations": {
             "get": {
                 "description": "This endpoint returns a list containing all operations supported by this model.\n",
                 "parameters": [
@@ -380,7 +343,7 @@
                 }
             }
         },
-        "/api/v1/models/{modelId}/operations/{operationId}": {
+        "/api/v2/models/{modelId}/operations/{operationId}": {
             "get": {
                 "description": "This endpoint returns the operation identified by *operationId*.\n",
                 "parameters": [
@@ -451,7 +414,7 @@
                 }
             }
         },
-        "/api/v1/models/{modelId}/tests": {
+        "/api/v2/models/{modelId}/tests": {
             "get": {
                 "description": "This endpoint returns the model tests.",
                 "parameters": [
@@ -479,7 +442,7 @@
                 }
             }
         },
-        "/api/v1/models/{modelId}/tests/{testId}": {
+        "/api/v2/models/{modelId}/tests/{testId}": {
             "get": {
                 "description": "This endpoint returns the model test identified by **testId**.",
                 "parameters": [
@@ -615,6 +578,16 @@
                 "readOnly": {
                     "type": "boolean",
                     "description": "Indicates whether the documents in this syntax are read-only or not."
+                },
+                "syntaxCheck": {
+                    "type": "boolean",
+                    "description": "Indicates whether the documents in this syntax must be checked or not."
+                },
+                "editorModeId": {
+                    "type": "string"
+                },
+                "editorModeUri": {
+                    "type": "string"
                 }
             }
         },
@@ -677,17 +650,17 @@
             "type": "object",
             "description": "Application annotations.",
             "properties": {
-                "severity": {
+                "type": {
                     "type": "string",
                     "enum": [
-                        "INFO",
-                        "WARNING",
-                        "ERROR",
-                        "FATAL"
+                        "info",
+                        "warning",
+                        "error",
+                        "fatal"
                     ],
                     "description": "Severity of the annotation."
                 },
-                "line": {
+                "row": {
                     "type": "integer",
                     "description": "Annotation line."
                 },
@@ -695,7 +668,7 @@
                     "type": "integer",
                     "description": "Annotation column."
                 },
-                "message": {
+                "text": {
                     "type": "string",
                     "description": "Annotation message."
                 }
@@ -741,6 +714,12 @@
         "Config": {
             "type": "object",
             "properties": {
+                "modalTitle": {
+                    "type": "string"
+                },
+                "modalDescription": {
+                    "type": "string"
+                },
                 "filter": {
                     "type": "string"
                 }

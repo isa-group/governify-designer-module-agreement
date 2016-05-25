@@ -2,7 +2,7 @@
     "id": "agreement-module",
     "title": "Agreement Designer Module",
     "description": "This module contains the basic infrastructure to manage Service Level Agreements. It offers support to analyze SLAs, providing a variety of document operations as validity, compliance, dead terms, etc.",
-    "apiVersion": "1",
+    "apiVersion": "2",
     "helpUri": "/views/help/index.jsp",
     "models": [
         {
@@ -12,15 +12,26 @@
             "syntaxes": [
                 {
                     "id": "iagree",
-                    "readOnly": false
+                    "readOnly": false,
+                    "syntaxCheck": false,
+                    "editorModeId": "ace/mode/template",
+                    "editorModeURI": "mode-template.js",
+                    "editorThemeId": "ace/theme/template",
+                    "editorThemeURI": "theme-template.js"
                 },
                 {
                     "id": "json",
-                    "readOnly": false
+                    "readOnly": false,
+                    "syntaxCheck": false,
+                    "editorModeId": "ace/mode/json",
+                    "editorModeURI": "mode-json.js"
                 },
                 {
                     "id": "yaml",
-                    "readOnly": false
+                    "readOnly": false,
+                    "syntaxCheck": false,
+                    "editorModeId": "ace/mode/yaml",
+                    "editorModeURI": "mode-yaml.js"
                 }
             ],
             "operations": [
@@ -36,7 +47,9 @@
                     "description": "Check if a document is compliant with this document.",
                     "type": "requireFile",
                     "config": {
-                        "filter": "*.ao"
+                        "modalTitle": "Check compliance with offer",
+                        "modalDescription": "Select an offer to check the compliance with this template.",
+                        "filter": "ao"
                     }
                 },
                 {
@@ -49,7 +62,10 @@
                     "id": "generateOPL",
                     "name": "Generate OPL",
                     "description": "Generate an OPL document.",
-                    "type": "createFile"
+                    "type": "createFile",
+                    "config": {
+                        
+                    }
                 }
             ]
         },
@@ -60,15 +76,23 @@
             "syntaxes": [
                 {
                     "id": "iagree",
-                    "readOnly": false
+                    "readOnly": false,
+                    "editorModeId": "ace/mode/offer",
+                    "editorModeURI": "mode-offer.js",
+                    "editorThemeId": "ace/theme/offer",
+                    "editorThemeURI": "theme-offer.js"
                 },
                 {
                     "id": "json",
-                    "readOnly": false
+                    "readOnly": false,
+                    "editorModeId": "ace/mode/json",
+                    "editorModeURI": "mode-json.js"
                 },
                 {
                     "id": "yaml",
-                    "readOnly": false
+                    "readOnly": false,
+                    "editorModeId": "ace/mode/yaml",
+                    "editorModeURI": "mode-yaml.js"
                 }
             ],
             "operations": [
@@ -84,7 +108,9 @@
                     "description": "Check if a document is compliant with this document.",
                     "type": "requireFile",
                     "config": {
-                        "filter": "*.at"
+                        "modalTitle": "Check compliance with template",
+                        "modalDescription": "Select a template to check the compliance with this offer.",
+                        "filter": "at"
                     }
                 },
                 {
@@ -103,7 +129,10 @@
                     "id": "generateOPL",
                     "name": "Generate OPL",
                     "description": "Generate an OPL document.",
-                    "type": "createFile"
+                    "type": "createFile",
+                    "config": {
+                        
+                    }
                 }
             ]
         },
@@ -114,15 +143,23 @@
             "syntaxes": [
                 {
                     "id": "iagree",
-                    "readOnly": false
+                    "readOnly": false,
+                    "editorModeId": "ace/mode/agreement",
+                    "editorModeURI": "mode-agreement.js",
+                    "editorThemeId": "ace/theme/agreement",
+                    "editorThemeURI": "theme-agreement.js"
                 },
                 {
                     "id": "json",
-                    "readOnly": false
+                    "readOnly": false,
+                    "editorModeId": "ace/mode/json",
+                    "editorModeURI": "mode-json.js"
                 },
                 {
                     "id": "yaml",
-                    "readOnly": false
+                    "readOnly": false,
+                    "editorModeId": "ace/mode/yaml",
+                    "editorModeURI": "mode-yaml.js"
                 }
             ],
             "operations": [
@@ -136,7 +173,10 @@
                     "id": "generateOPL",
                     "name": "Generate OPL",
                     "description": "Generate an OPL document.",
-                    "type": "createFile"
+                    "type": "createFile",
+                    "config": {
+                        
+                    }
                 }
             ]
         }
