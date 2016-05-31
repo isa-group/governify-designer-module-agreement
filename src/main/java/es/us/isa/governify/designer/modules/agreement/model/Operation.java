@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.Map;
 
 /**
  * Operation supported by the model.
@@ -17,11 +18,11 @@ public class Operation {
     private String name = null;
     private String description = null;
     private String type = null;
-    private Config config = null;
+    private Map<String, String> config = null;
 
     /**
      * Unique identifier representing this operation, i.e. \"checkValidity\"
-   *
+     *
      */
     @ApiModelProperty(value = "Unique identifier representing this operation, i.e. \"checkValidity\"")
     @JsonProperty("id")
@@ -35,7 +36,7 @@ public class Operation {
 
     /**
      * Name of this operation, i.e. \"Check validity\"
-   *
+     *
      */
     @ApiModelProperty(value = "Name of this operation, i.e. \"Check validity\"")
     @JsonProperty("name")
@@ -49,7 +50,7 @@ public class Operation {
 
     /**
      * Description of this operation, i.e. \"Check if document is valid.\"
-   *
+     *
      */
     @ApiModelProperty(value = "Description of this operation, i.e. \"Check if document is valid.\"")
     @JsonProperty("description")
@@ -64,7 +65,7 @@ public class Operation {
     /**
      * Type of the operation. Can be \"simple\", \"requireFile\" or
      * \"createFile\"
-   *
+     *
      */
     @ApiModelProperty(value = "Type of the operation. Can be \"simple\", \"requireFile\" or \"createFile\"")
     @JsonProperty("type")
@@ -81,11 +82,11 @@ public class Operation {
      */
     @ApiModelProperty(value = "")
     @JsonProperty("config")
-    public Config getConfig() {
+    public Map<String, String> getConfig() {
         return config;
     }
 
-    public void setConfig(Config config) {
+    public void setConfig(Map<String, String> config) {
         this.config = config;
     }
 

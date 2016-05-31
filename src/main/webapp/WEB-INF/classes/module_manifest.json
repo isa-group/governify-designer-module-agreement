@@ -6,18 +6,18 @@
     "helpUri": "/views/help/index.jsp",
     "models": [
         {
-            "id": "template",
-            "extension": "at",
-            "name": "Template",
+            "id": "iagree-template",
+            "extension": "iat",
+            "name": "iAgree template",
             "syntaxes": [
                 {
                     "id": "iagree",
                     "readOnly": false,
                     "syntaxCheck": false,
-                    "editorModeId": "ace/mode/template",
-                    "editorModeURI": "mode-template.js",
-                    "editorThemeId": "ace/theme/template",
-                    "editorThemeURI": "theme-template.js"
+                    "editorModeId": "ace/mode/iagree",
+                    "editorModeURI": "mode-iagree.js",
+                    "editorThemeId": "ace/theme/iagree",
+                    "editorThemeURI": "theme-iagree.js"
                 },
                 {
                     "id": "json",
@@ -56,7 +56,12 @@
                     "id": "complianceAnalysis",
                     "name": "Compliance analysis",
                     "description": "Return a compliance analysis.",
-                    "type": "simple"
+                    "type": "requireFile",
+                    "config": {
+                        "modalTitle": "Check compliance with offer",
+                        "modalDescription": "Select an offer to check the compliance with this template.",
+                        "filter": "ao"
+                    }
                 },
                 {
                     "id": "generateOPL",
@@ -64,23 +69,23 @@
                     "description": "Generate an OPL document.",
                     "type": "createFile",
                     "config": {
-                        
+                        "ext": "opl"
                     }
                 }
             ]
         },
         {
-            "id": "offer",
-            "extension": "ao",
-            "name": "Offer",
+            "id": "iagree-offer",
+            "extension": "iao",
+            "name": "iAgree offer",
             "syntaxes": [
                 {
                     "id": "iagree",
                     "readOnly": false,
-                    "editorModeId": "ace/mode/offer",
-                    "editorModeURI": "mode-offer.js",
-                    "editorThemeId": "ace/theme/offer",
-                    "editorThemeURI": "theme-offer.js"
+                    "editorModeId": "ace/mode/iagree",
+                    "editorModeURI": "mode-iagree.js",
+                    "editorThemeId": "ace/theme/iagree",
+                    "editorThemeURI": "theme-iagree.js"
                 },
                 {
                     "id": "json",
@@ -137,17 +142,17 @@
             ]
         },
         {
-            "id": "agreement",
-            "extension": "ag",
-            "name": "Agreement",
+            "id": "iagree-agreement",
+            "extension": "iag",
+            "name": "iAgree agreement",
             "syntaxes": [
                 {
                     "id": "iagree",
                     "readOnly": false,
-                    "editorModeId": "ace/mode/agreement",
-                    "editorModeURI": "mode-agreement.js",
-                    "editorThemeId": "ace/theme/agreement",
-                    "editorThemeURI": "theme-agreement.js"
+                    "editorModeId": "ace/mode/iagree",
+                    "editorModeURI": "mode-iagree.js",
+                    "editorThemeId": "ace/theme/iagree",
+                    "editorThemeURI": "theme-iagree.js"
                 },
                 {
                     "id": "json",

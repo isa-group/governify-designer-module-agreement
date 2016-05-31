@@ -153,9 +153,7 @@ public class AnalyzeDelegate {
             } else if (id.equals("generateOPL")) {
                 try {
                     appResponse = ConversionDelegate.convert("iagree", "opl", data.get(0));
-                    String newURI = constructUri(fileUri, "opl");
-                    appResponse
-                            .setMessage("<pre><b>The OPL document has been generated successfully.</b></pre>");
+                    appResponse.setMessage("<pre><b>The OPL document has been generated successfully.</b></pre>");
                 } catch (Exception e) {
                     appResponse.setMessage("<pre>There was an error.</pre>");
                     appResponse.setStatus(StatusEnum.ERROR);

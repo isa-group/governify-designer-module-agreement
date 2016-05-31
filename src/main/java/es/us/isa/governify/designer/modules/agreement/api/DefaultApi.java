@@ -28,16 +28,6 @@ public class DefaultApi {
 
     @Autowired
     private ModuleManifest module;
-
-    @ApiOperation(value = "", notes = "This endpoint returns the agreement module manifest.", response = ModuleManifest.class)
-    @ApiResponses(value = {
-        @ApiResponse(code = 200, message = "The agreement module manifest in JSON format")})
-    @RequestMapping(value = "/manifest",
-            produces = {"application/json", "text/plain"},
-            method = RequestMethod.GET)
-    public ResponseEntity<ModuleManifest> rootGet() throws NotFoundException {
-        return new ResponseEntity<>(module, HttpStatus.OK);
-    }
     
     @ApiOperation(value = "", notes = "This endpoint returns the agreement module manifest.", response = ModuleManifest.class)
     @ApiResponses(value = {
@@ -46,7 +36,7 @@ public class DefaultApi {
             produces = {"application/json", "text/plain"},
             method = RequestMethod.GET)
     public ResponseEntity<ModuleManifest> rootApiGet() throws NotFoundException {
-        return rootGet();
+        return new ResponseEntity<>(module, HttpStatus.OK);
     }
 
     @ApiOperation(value = "", notes = "This endpoint returns the agreement module manifest.", response = ModuleManifest.class)

@@ -198,7 +198,7 @@ public class ModelsApi {
         if (model == null) {
             throw new ResourceNotFoundException();
         }
-        String mode = Utils.loadFileContents("/modes/mode-" + modelId +".js");
+        String mode = Utils.loadFileContents("/modes/mode-" + syntaxId + ".js");
         return new ResponseEntity<>(mode, HttpStatus.OK);
     }
 
@@ -213,8 +213,12 @@ public class ModelsApi {
         if (model == null) {
             throw new ResourceNotFoundException();
         }
-        String theme = Utils.loadFileContents("/modes/theme-" + modelId +".js");
-        return new ResponseEntity<>(theme, HttpStatus.OK);
+        try {
+            String theme = Utils.loadFileContents("/modes/theme-" + syntaxId + ".js");
+            return new ResponseEntity<>(theme, HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResourceNotFoundException();
+        }
     }
 
     @ApiOperation(value = "", notes = "This endpoint returns the model tests.", response = Test.class, responseContainer = "List")
@@ -254,7 +258,7 @@ public class ModelsApi {
         Test[] tests = new Gson().fromJson(jsonTests, Test[].class);
         Test test = null;
         for (Test t : tests) {
-            if(t.getId().equals(testId)){
+            if (t.getId().equals(testId)) {
                 test = t;
                 Parameter param = t.getOperationParams();
                 for (Filedata data : param.getData()) {
@@ -280,20 +284,22 @@ public class ModelsApi {
         Test[] tests = new Gson().fromJson(jsonTests, Test[].class);
         Boolean res = null;
         for (Test test : tests) {
-            if(test.getId().equals(testId)){
+            if (test.getId().equals(testId)) {
                 Parameter param = test.getOperationParams();
                 for (Filedata data : param.getData()) {
                     data.setContent(Utils.loadFileContents(data.getFileUri()));
                 }
                 ResponseEntity<AppResponse> entity = modelsModelIdOperationsOperationIdPost(modelId, test.getOperationParams().getOperationId(), test.getOperationParams().getData());
                 AppResponse response = entity.getBody();
-                for(AppResponse expectedResponse : test.getResults()){
+                for (AppResponse expectedResponse : test.getResults()) {
                     res = response.equals(expectedResponse);
-                    if(res) break;
+                    if (res) {
+                        break;
+                    }
                 }
             }
         }
-        
+
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
