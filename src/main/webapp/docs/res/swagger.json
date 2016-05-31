@@ -15,6 +15,22 @@
         "text/plain"
     ],
     "paths": {
+        "/manifest": {
+            "get": {
+                "description": "This endpoint returns the agreement module manifest.\n",
+                "tags": [
+                    "Manifest"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The agreement module manifest in JSON format",
+                        "schema": {
+                            "$ref": "#/definitions/ModuleManifest"
+                        }
+                    }
+                }
+            }
+        },
         "/version": {
             "get": {
                 "description": "This endpoint returns the agreement module version.\n",
