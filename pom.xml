@@ -8,12 +8,12 @@
     <name>agreement-module</name>
   
     <properties>
-        <swagger-core-version>1.5.4</swagger-core-version>
+        <swagger-core-version>1.5.22</swagger-core-version>
         <slf4j-version>1.6.3</slf4j-version>
         <scala-test-version>1.6.1</scala-test-version>
         <junit-version>4.8.1</junit-version>
         <servlet-api-version>2.5</servlet-api-version>
-        <springfox-version>2.0.4-SNAPSHOT</springfox-version>
+        <springfox-version>2.3.1</springfox-version>
         <spring-version>4.0.9.RELEASE</spring-version>
         <aml.version>0.9.7-SNAPSHOT</aml.version>
         <java.version>1.7</java.version>
