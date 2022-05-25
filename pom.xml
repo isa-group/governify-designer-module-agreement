@@ -14,7 +14,7 @@
         <junit-version>4.8.1</junit-version>
         <servlet-api-version>2.5</servlet-api-version>
         <springfox-version>2.0.4-SNAPSHOT</springfox-version>
-        <spring-version>4.0.9.RELEASE</spring-version>
+        <spring-version>5.2.22.RELEASE</spring-version>
         <aml.version>0.9.7-SNAPSHOT</aml.version>
         <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
